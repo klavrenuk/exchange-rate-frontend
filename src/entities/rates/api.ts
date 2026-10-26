@@ -1,4 +1,9 @@
-import { api } from './client'
+import { api } from '@/shared/api'
+
+export async function getRates(ondate?: string) {
+  const res = await api.get('/nbrb/rates', { params: ondate ? { ondate } : {} })
+  return res.data
+}
 
 export async function syncCurrencies() {
   const res = await api.post('/nbrb/sync-currencies')
@@ -17,10 +22,5 @@ export async function updateToday(periodicity = 0) {
 
 export async function reportAndSend() {
   const res = await api.post('/nbrb/report-and-send')
-  return res.data
-}
-
-export async function getRates(ondate?: string) {
-  const res = await api.get('/nbrb/rates', { params: ondate ? { ondate } : {} })
   return res.data
 }

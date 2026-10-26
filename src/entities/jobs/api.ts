@@ -1,9 +1,4 @@
-import { api } from './client'
-
-export async function getHealth() {
-  const res = await api.get('/health')
-  return res.data
-}
+import { api } from '@/shared/api'
 
 export async function getOverview() {
   const res = await api.get('/status/overview')
